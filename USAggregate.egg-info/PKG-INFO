@@ -1,3 +1,18 @@
+Metadata-Version: 2.1
+Name: USAggregate
+Version: 1.0.4
+Summary: A package for aggregating and merging US geographic data frames.
+Home-page: https://github.com/ethand05hi/USAggregate
+Author: Ethan Doshi
+Author-email: ethandoshi00@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+
 # USAggregate
 
 USAggregate is a Python package for aggregating and merging US relational data frames.
