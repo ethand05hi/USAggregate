@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+USAggregate/__init__.py
+USAggregate/usaggregate.py
+USAggregate.egg-info/PKG-INFO
+USAggregate.egg-info/SOURCES.txt
+USAggregate.egg-info/dependency_links.txt
+USAggregate.egg-info/requires.txt
+USAggregate.egg-info/top_level.txt
+USAggregate/data/zipcodes.csv
