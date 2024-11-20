@@ -34,10 +34,35 @@ def usaggregate(data, level,
 
     state_map = dict(zip(zip_relations['ST'], zip_relations['state']))
 
-    def preprocess_numeric_columns(df):
-        excluded_cols = {'zipcode', 'city', 'county', 'state', 'Date'}
+    def preprocess_zipcode_column(df):
+        """
+        Ensure the 'zipcode' column has 5-character strings, taking only the part before '-'.
+        """
         if 'zipcode' in df.columns:
+            # Ensure string type
             df['zipcode'] = df['zipcode'].astype(str)
+            # Take only part before '-'
+            df['zipcode'] = df['zipcode'].str.split('-').str[0]
+            # Add leading zeros to ensure 5 characters
+            df['zipcode'] = df['zipcode'].str.zfill(5)
+        return df
+
+    def preprocess_countyfp_column(df):
+        """
+        Ensure 'COUNTYFP' column is a string of 5 characters and merge 'state' and 'county' if missing.
+        """
+        if 'COUNTYFP' in df.columns:
+            # Ensure string type
+            df['COUNTYFP'] = df['COUNTYFP'].astype(str)
+            # Add leading zeros to ensure 5 characters
+            df['COUNTYFP'] = df['COUNTYFP'].str.zfill(5)
+            # Merge 'state' and 'county' if missing
+            if 'state' not in df.columns and 'county' not in df.columns:
+                df = df.merge(zip_relations[['state', 'county']], on='COUNTYFP', how='left')
+        return df
+
+    def preprocess_numeric_columns(df):
+        excluded_cols = {'zipcode', 'city', 'county', 'state', 'COUNTYFP', 'Date'}
         for col in df.columns:
             if col not in excluded_cols:
                 df[col] = pd.to_numeric(df[col], errors='ignore')
@@ -118,6 +143,8 @@ def usaggregate(data, level,
 
     aggregated_data = []
     for df in data:
+        df = preprocess_zipcode_column(df)
+        df = preprocess_countyfp_column(df)
         df = preprocess_numeric_columns(df)
         df = preprocess_state_column(df)
         df = preprocess_date_column(df, time_period)
@@ -134,4 +161,3 @@ def usaggregate(data, level,
     columns_to_drop = ['ST', 'state', 'county', 'zipcode', 'Date', 'city']
     result.drop(columns=[col for col in columns_to_drop if col in result.columns], inplace=True, errors='ignore')
     return result
-

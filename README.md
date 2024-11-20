@@ -1,6 +1,6 @@
 # USAggregate
 
-USAggregate is a Python package for aggregating and merging US relational data frames. Current version is 1.1.0
+USAggregate is a Python package for aggregating and merging US relational data frames. Current version is 1.1.1.
 
 ## Example Use Case
 
@@ -15,7 +15,7 @@ pip install USAggregate
 ```
 ## Use Notes
 
-Users will need to manually change geographic identifier columns to 'zipcode', 'city', 'county', or 'state'. Zip codes can be aggregated to the city-state levels without additional info. Data at the city our county levels will need state information as well due to duplicate names. If each data frame you wish to aggregate has a year identifier and would like to group by year, name the column 'Year'. If you would like to group by other timeframes (day, week, month, and quarter are available options) label your columns 'Date'. In this version, users can also specify specific columns they would like to be aggregated using a method differing from the global option set. 
+Users will need to manually change geographic identifier columns to 'zipcode', 'city', 'county', 'COUNTYFP' or 'state'. Zip codes can be aggregated to the city-state levels without additional info. Data at the city our county levels will need state information as well due to duplicate names. If each data frame you wish to aggregate has a year identifier and would like to group by year, name the column 'Year'. If you would like to group by other timeframes (day, week, month, and quarter are available options) label your columns 'Date'. In this version, users can also specify specific columns they would like to be aggregated using a method differing from the global option set. 
 
 Below is an example of package usage.
 

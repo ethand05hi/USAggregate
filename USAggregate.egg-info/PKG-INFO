@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: USAggregate
-Version: 1.1.0
+Version: 1.1.1
 Summary: A package for aggregating and merging US geographic data frames.
 Home-page: https://github.com/ethand05hi/USAggregate
 Author: Ethan Doshi
@@ -63,7 +63,6 @@ data_county = pd.DataFrame({
 
 df = usaggregate(
     data=[data_city, data_zip, data_county],
-    zip_relations=zip_relations,
     level='county',
     agg_numeric_geo='sum',
     agg_character_geo='first',
