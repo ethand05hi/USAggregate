@@ -21,11 +21,12 @@ Below is an example of package usage.
 
 ```{python}
 import pandas as pd
+import numpy as np
 from USAggregate import usaggregate
 
 data_zip = pd.DataFrame({
     'zipcode': ['98199', '98103', '98001', '98002', '91360', '91358', '93001', '93003', '98199', '98103', '98001', '98002', '91360', '91358', '93001', '93003'],
-    'value1': [1, 2, 3, np.nan, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8],
+    'value1': [np,nan, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2],
     'chr1': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
     'Year': [2010, 2010, 2010, 2010, 2010, 2010, 2010, 2010, 2011, 2011, 2011, 2011, 2011, 2011, 2011, 2011]
 })
@@ -51,7 +52,7 @@ df = usaggregate(
     level='county',
     agg_numeric_geo='sum',
     agg_character_geo='first',
-    col_specific_agg_num_geo={'value1': 'mean'},
+    col_specific_agg_num_geo={'value2': 'mean'},
     col_specific_agg_chr_geo={'chr1': 'last'},
     time_period='year'
 )
