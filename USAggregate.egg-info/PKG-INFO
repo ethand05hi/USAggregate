@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: USAggregate
-Version: 1.1.1
+Version: 1.1.5
 Summary: A package for aggregating and merging US geographic data frames.
 Home-page: https://github.com/ethand05hi/USAggregate
 Author: Ethan Doshi
@@ -15,7 +15,7 @@ Requires-Dist: pandas
 
 # USAggregate
 
-USAggregate is a Python package for aggregating and merging US relational data frames. Current version is 1.1.0
+USAggregate is a Python package for aggregating and merging US relational data frames. Current version is 1.1.1.
 
 ## Example Use Case
 
@@ -30,7 +30,7 @@ pip install USAggregate
 ```
 ## Use Notes
 
-Users will need to manually change geographic identifier columns to 'zipcode', 'city', 'county', or 'state'. Zip codes can be aggregated to the city-state levels without additional info. Data at the city our county levels will need state information as well due to duplicate names. If each data frame you wish to aggregate has a year identifier and would like to group by year, name the column 'Year'. If you would like to group by other timeframes (day, week, month, and quarter are available options) label your columns 'Date'. In this version, users can also specify specific columns they would like to be aggregated using a method differing from the global option set. 
+Users will need to manually change geographic identifier columns to 'tract', 'zipcode', 'city', 'county', 'COUNTYFP' or 'state'. Tracts can be aggregated to further levels without additional info. Zip codes can be aggregated to further levels without additional info. Data at the city our county levels will need state information as well due to duplicate names. If each data frame you wish to aggregate has a year identifier and would like to group by year, name the column 'Year'. If you would like to group by other timeframes (day, week, month, and quarter are available options) label your columns 'Date'. In this version, users can also specify specific columns they would like to be aggregated using a method differing from the global option set. 
 
 Below is an example of package usage.
 
