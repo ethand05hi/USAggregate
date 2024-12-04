@@ -20,7 +20,21 @@ Users will need to manually change geographic identifier columns as well as spli
 Below is a list of accepted geographic identifier column names followed by a description.
 
 ## Supported Geographic Identifier Column names
-As of 1.1.12, no need to manually rename colums
+'TRACT': 11 digit Census tract code. No need to worry about missing leading 0s.
+
+'STATEFP': 2 digit state FIPS code. No need to worry about missing leading 0s.
+
+'COUNTYFP': 3 difit county FIPS code. No need to worry about missing leading 0s.
+
+'STATECOUNTYFP': 5 digit combined state and county FIPS code. No need to worry about missing leading 0s.
+
+'zipcode': 5 digit zip code. No need to worry about missing leading 0s or extended zipcodes including the '-' character.
+
+'city': City name (e.g. 'Los Angeles').
+
+'county': County name (e.g. 'Los Angeles County').
+
+'state': State name or state abbreviation (e.g. 'California' OR 'CA').
 
 ## Aggregation Levels Logic
 'TRACT' data can be aggregated to the 'tract' (identity), 'county', or 'state' level.
