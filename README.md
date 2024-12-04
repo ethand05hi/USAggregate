@@ -18,7 +18,25 @@ pip install USAggregate
 Users will need to manually  split any joint geographic identifiers (as seen in ACS data).
 
 ## Supported Geographic Identifier Column names
+<<<<<<< HEAD
 As of 1.1.12, no need to manually rename colums
+=======
+TRACT: Census tract 11 digit numeric code. No need to worry about missing leading 0s.
+
+COUNTYFP: 3 digit FIPS code referring to county. No need to worry about missing leading 0s.
+
+STATEFP: 2 digit FIPS code referring to state. No need to worry about missing leading 0s.
+
+STATECOUNTYFP: 5 digit combined state and county FIPS code. No need to worry about missing leading 0s.
+
+zipcode: 5 digit zip code. No need to worry about missing leading 0s or extended zip codes including a '-'. 
+
+city: City name (e.g. 'Los Angeles').
+
+county: County name (e.g. 'Los Angeles County')
+
+state: Full state name OR abbreviation (e.g. 'California' OR 'CA')
+>>>>>>> 936830d894219f7f5c8a2822b1e7aea034bda1a9
 
 ## Aggregation Levels Logic
 'TRACT' data can be aggregated to the 'tract' (identity), 'county', or 'state' level.
@@ -36,9 +54,16 @@ Census Tract: To aggregate a data frame at the 'tract' (column name 'TRACT') lev
 
 Zip Code: To aggregate a data frame at the 'zipcode' (column name 'zipcode') level up to any of the supported levels, no additional geographic information is needed in the data frame.
 
+<<<<<<< HEAD
 City: To aggregate a data frame at the 'city' level up to any of the supported levels, state information is needed as well.
 
 County: To aggregate a data frame at the 'county' level, state information is needed as well.
+=======
+City: To aggregate a data frame at the 'city' (column name 'city') level up to any of the supported levels, state information (column names 'state', 'STATEFP', or 'STATECOUNTYFP) is needed as well.
+
+County: To aggregate a data frame at the 'county' (column names 'county', 'COUNTYFP', or 'STATECOUNTYFP) level, state information (column names 'state', 'STATEFP', or 'STATECOUNTYFP) is needed as well.
+>>>>>>> 936830d894219f7f5c8a2822b1e7aea034bda1a9
+
 
 ## Supported Aggregation Methods
 Numeric: 'mean', 'median', 'mode', 'sum', 'first', 'last', 'min', 'max'.
