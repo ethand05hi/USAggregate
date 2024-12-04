@@ -1,5 +1,4 @@
 import pandas as pd
-import random
 import pkg_resources
 
 def load_zip_relations():
@@ -43,50 +42,7 @@ def usaggregate(data, level,
     col_specific_agg_num_geo = col_specific_agg_num_geo or {}
     col_specific_agg_chr_geo = col_specific_agg_chr_geo or {}
     
-    def rename_columns(df, zip_relations, tracts):
-        # Convert all df columns to string dtype
-        df = df.astype(str)
-        
-        reference_dataframes = {
-        'zip_relations': zip_relations,
-        'tracts': tracts
-        }
     
-        # Priority order for reference columns
-        match_order = ['state', 'ST', 'county', 'city', 'STATEFP', 'COUNTYFP', 'STATECOUNTYFP', 'zipcode']
-    
-        for col in df.columns:
-            # Skip columns that cannot be normalized
-            if col in ['Date', 'Year']:
-                continue
-    
-            # Randomly sample up to 100 unique values from the column and normalize (remove leading zeros)
-            sample_values = set(value.lstrip('0') for value in 
-                                random.sample(df[col].dropna().unique().tolist(),
-                                              min(200, len(df[col].dropna().unique()))))
-    
-            matched = False  # Track if a column is matched
-            for ref_name, ref_df in reference_dataframes.items():
-                for ref_col in match_order:
-                    # Skip reference columns not present in the reference DataFrame
-                    if ref_col not in ref_df.columns:
-                        continue
-                    
-                    # Normalize reference column values (remove leading zeros)
-                    normalized_ref_values = set(ref_df[ref_col].dropna().astype(str).str.lstrip('0').unique())
-    
-                    # Check if any normalized sample value matches normalized reference values
-                    if sample_values & normalized_ref_values:
-                        # Rename to 'state' if matched with 'ST'
-                        new_col_name = 'state' if ref_col == 'ST' else ref_col
-                        print(f"Renaming column '{col}' to '{new_col_name}' based on {ref_name}")
-                        df.rename(columns={col: new_col_name}, inplace=True)
-                        matched = True
-                        break  # Stop checking further reference columns once a match is found
-                if matched:
-                    break  # Stop checking other reference DataFrames if column already renamed
-    
-        return df
 
     state_map = dict(zip(zip_relations['ST'], zip_relations['state']))
     
@@ -262,7 +218,6 @@ def usaggregate(data, level,
 
     aggregated_data = []
     for df in data:
-        df = rename_columns(df, zip_relations, tracts)
         df = preprocess_tract_column(df)
         df = preprocess_zipcode_column(df)
         df = preprocess_individualfp_columns(df)
