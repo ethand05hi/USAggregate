@@ -8,4 +8,5 @@ USAggregate.egg-info/SOURCES.txt
 USAggregate.egg-info/dependency_links.txt
 USAggregate.egg-info/requires.txt
 USAggregate.egg-info/top_level.txt
+USAggregate/data/tracts.csv
 USAggregate/data/zipcodes.csv

@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='USAggregate',
-    version='1.1.6',
+    version='1.1.11',
     packages=find_packages(),
     install_requires=[
         'pandas'
     ],
     package_data={
-        'USAggregate': ['data/zipcodes.csv'],
+        'USAggregate': ['data/zipcodes.csv', 'data/tracts.csv'],
     },
     include_package_data=True,
     author='Ethan Doshi',

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: USAggregate
-Version: 1.1.6
+Version: 1.1.11
 Summary: A package for aggregating and merging US geographic data frames.
 Home-page: https://github.com/ethand05hi/USAggregate
 Author: Ethan Doshi
